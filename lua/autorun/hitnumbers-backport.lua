@@ -37,30 +37,31 @@ do
 	end
 end
 
-local GAMEMODE = GM or GAMEMODE
-
 if SERVER then
 	util.AddNetworkString("sharedTakeDamage")
 
-	GAMEMODE.__EntityTakeDamage = GAMEMODE.__EntityTakeDamage or GAMEMODE.EntityTakeDamage
+	timer.Simple(1, function()
+		local GAMEMODE = GM or GAMEMODE
+		GAMEMODE.__EntityTakeDamage = GAMEMODE.__EntityTakeDamage or GAMEMODE.EntityTakeDamage
 
-	function GAMEMODE:EntityTakeDamage(targ, info, ...)
-		if targ.PreTakeDamage and targ:PreTakeDamage(info) then
-			return true
+		function GAMEMODE:EntityTakeDamage(targ, info, ...)
+			if targ.PreTakeDamage and targ:PreTakeDamage(info) then
+				return true
+			end
+
+			local res = self.__EntityTakeDamage(self, targ, info, ...)
+			if res then return true end
+
+			hook.Run("EntityTakeDamageFinal", targ, info, ...)
+
+			net.Start("sharedTakeDamage")
+				net.WriteEntity(targ)
+				net.WriteCTakeDamageInfo(info)
+			net.Broadcast()
+
+			hook.Run("SharedEntityTakeDamage", targ, info, ...)
 		end
-
-		local res = self.__EntityTakeDamage(self, targ, info, ...)
-		if res then return true end
-
-		hook.Run("EntityTakeDamageFinal", targ, info, ...)
-
-		net.Start("sharedTakeDamage")
-			net.WriteEntity(targ)
-			net.WriteCTakeDamageInfo(info)
-		net.Broadcast()
-
-		hook.Run("SharedEntityTakeDamage", targ, info, ...)
-	end
+	end)
 
 	return
 else
