@@ -1,11 +1,11 @@
-local ext = {tag = "bw18.doorbreaking"}
+local ext = {getTag = function() return "bw18.doorbreaking" end}
 
-ext.doorHealth = 100
+ext.doorHealth = 500
 ext.respawnTime = 60
 
 -- ext:addEntityTracker("doors", "isDoor")
 
-hook.Add("OnEntityCreated", ext.tag, function(...) ext:isDoor(...) end)
+hook.Add("OnEntityCreated", ext:getTag(), function(...) ext:isDoor(...) end)
 
 function ext:isDoor(ent)
 	if ent:GetClass() == "prop_door_rotating" then
@@ -56,7 +56,7 @@ end
 function ext:PlayerUse(ply, ent)
 	if ent.__broken then return false end
 end
-hook.Add("PlayerUse", ext.tag, function(...) return ext:PlayerUse(...) end)
+hook.Add("PlayerUse", ext:getTag(), function(...) return ext:PlayerUse(...) end)
 
 function ext:disableVisuals(ent)
 	if not IsValid(ent) then return end
@@ -83,4 +83,4 @@ function ext:EntityTakeDamage(ent, info)
 		self:disableVisuals(ent)
 	end)
 end
-hook.Add("EntityTakeDamage", ext.tag, function(...) return ext:EntityTakeDamage(...) end)
+hook.Add("EntityTakeDamage", ext:getTag(), function(...) return ext:EntityTakeDamage(...) end)
