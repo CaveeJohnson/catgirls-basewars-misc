@@ -9,7 +9,6 @@ hook.Add("OnEntityCreated", ext:getTag(), function(...) ext:isDoor(...) end)
 
 function ext:isDoor(ent)
 	if ent:GetClass() == "prop_door_rotating" then
-		gbbbbbbbbbbbbbbbbbbbbbb
 
         timer.Simple(1, function()
             if not IsValid(ent) return end
