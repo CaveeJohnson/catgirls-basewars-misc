@@ -11,9 +11,12 @@ function ext:isDoor(ent)
 	if ent:GetClass() == "prop_door_rotating" then
 		ent.__breakableDoor = true
 
-		ent:SetHealth(ext.doorHealth)
-		ent:SetMaxHealth(ext.doorHealth)
-		print("!!!!!!! isDoor", ent, ext.doorHealth, ent:GetMaxHealth())
+        timer.Simple(1, function()
+            if not IsValid(ent) return end
+
+            ent:SetHealth(ext.doorHealth)
+            ent:SetMaxHealth(ext.doorHealth)
+        end)
 
 		return true
 	end
