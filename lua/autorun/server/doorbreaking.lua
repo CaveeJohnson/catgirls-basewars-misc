@@ -1,6 +1,6 @@
 local ext = {getTag = function() return "bw18.doorbreaking" end}
 
-ext.doorHealth = 500
+ext.doorHealth = 150
 ext.respawnTime = 60
 
 -- ext:addEntityTracker("doors", "isDoor")
