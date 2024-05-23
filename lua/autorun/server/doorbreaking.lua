@@ -13,6 +13,7 @@ function ext:isDoor(ent)
 
 		ent:SetHealth(ext.doorHealth)
 		ent:SetMaxHealth(ext.doorHealth)
+		print("!!!!!!! isDoor", ent, ext.doorHealth, ent:GetMaxHealth())
 
 		return true
 	end
