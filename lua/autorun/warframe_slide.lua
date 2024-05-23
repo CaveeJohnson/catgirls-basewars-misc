@@ -1,3 +1,5 @@
+do return end
+
 local tag = "warframe_slide"
 
 setfenv(1, _G) -- need to run this because easylua fucks it up for clients

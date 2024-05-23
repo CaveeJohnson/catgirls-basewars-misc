@@ -1,3 +1,5 @@
+do return end
+
 local tag = "warframe_bulletjump"
 
 local sounds = {
