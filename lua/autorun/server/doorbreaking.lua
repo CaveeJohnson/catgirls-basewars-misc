@@ -3,7 +3,9 @@ local ext = {tag = "bw18.doorbreaking"}
 ext.doorHealth = 100
 ext.respawnTime = 60
 
-ext:addEntityTracker("doors", "isDoor")
+-- ext:addEntityTracker("doors", "isDoor")
+
+hook.Add("OnEntityCreated", ext.tag, function(...) ext:isDoor(...) end)
 
 function ext:isDoor(ent)
 	if ent:GetClass() == "prop_door_rotating" then
