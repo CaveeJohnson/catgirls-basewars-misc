@@ -37,6 +37,8 @@ do
 	end
 end
 
+local GAMEMODE = GM or GAMEMODE
+
 if SERVER then
 	util.AddNetworkString("sharedTakeDamage")
 
