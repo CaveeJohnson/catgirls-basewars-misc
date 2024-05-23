@@ -6,9 +6,9 @@ if SERVER then
 
 	timer.Create("serverRestart-timer", 43200, 0, function()
 		local oldhostname = GetHostName()
-		if SetHostName then
-			SetHostName("UK/EU Official Hexahedron BaseWars | Restarting...")
-		end
+		-- if SetHostName then
+		-- 	SetHostName("UK/EU Official Hexahedron BaseWars | Restarting...")
+		-- end
 
 		if aowl and aowl.CountDown then
 			aowl.CountDown(60, "Automatic server restart", function()

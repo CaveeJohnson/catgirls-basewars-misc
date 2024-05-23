@@ -60,7 +60,8 @@ local function init()
 				ply:SetNWBool("wardrobe", true)
 
 				if ply._restrict_loaded then
-					ply:ChatPrint(string.format("You have recieved Wardrobe Access for playing for %d hours.", hrs_wardrobe))
+					ply:ChatPrint(string.format("You have received Wardrobe Access for playing for %d hours.", hrs_wardrobe))
+					ply._restrict_loaded = nil
 				end
 			end
 
@@ -68,7 +69,7 @@ local function init()
 
 			if new and ply:hasVIPAccess() then
 				ply:SetUserGroup(new, true)
-				ply:ChatPrint(string.format("You have recieved VIP for playing for %d hours.", hrs_vip))
+				ply:ChatPrint(string.format("You have received VIP for playing for %d hours.", hrs_vip))
 
 				return true
 			end
