@@ -44,9 +44,9 @@ local function init()
 
 	if aowl then
 		local tbl = {
-			players    = "donators",
-			helpers    = "viphelpers",
-			moderators = "vipmoderators",
+			user    = "donators",
+			-- helpers    = "viphelpers",
+			-- moderators = "vipmoderators",
 		}
 
 		-- local tbl2 = {
