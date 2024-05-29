@@ -56,6 +56,7 @@ local accentTranslate = {
 	mx = "es-mx",
 	ph = "en-ph",
 	md = "ro-md",
+	br = "pt-br",
 }
 
 function tts.getAccent(attempt)
