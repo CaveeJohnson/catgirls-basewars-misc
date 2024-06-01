@@ -39,6 +39,7 @@ local downloads =
 
 	-- "1981434087", -- ACF content
 	"174651081", --  gm_excess_construct
+	"173482196", -- sprops
 }
 
 for _,v in ipairs(downloads) do
