@@ -38,5 +38,3 @@ end
 local tag = "buttonfucker"
 hook.Add("InitPostEntity", tag, buttonfucker)
 hook.Add("PostCleanupMap", tag, buttonfucker)
-
-buttonfucker()
